@@ -1,4 +1,4 @@
-package com.rexcantor64.multilanguageplugin.testsuite.commands;
+package com.rexcantor64.triton.testsuite.commands;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -21,6 +21,12 @@ public class MainCMD implements CommandExecutor, TabCompleter {
         setCommandAndCompleter("title", new TitleCMD());
         subCommands.put("tab", new TabCMD());
         subCommands.put("gui", new GuiCMD());
+        subCommands.put("kick", new KickCMD());
+        subCommands.put("scoreboard", new ScoreboardCMD());
+        try {
+            subCommands.put("bossbar", new BossbarCMD());
+        }catch(NoClassDefFoundError ignore){
+        }
     }
 
     @Override

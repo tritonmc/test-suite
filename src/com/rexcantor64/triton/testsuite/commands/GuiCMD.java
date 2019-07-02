@@ -1,31 +1,26 @@
-package com.rexcantor64.multilanguageplugin.testsuite.commands;
+package com.rexcantor64.triton.testsuite.commands;
 
-import com.rexcantor64.multilanguageplugin.testsuite.Main;
-import com.rexcantor64.multilanguageplugin.testsuite.ReflectionUtils;
+import com.rexcantor64.triton.testsuite.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class GuiCMD implements CommandExecutor {
 
     private String title;
 
     GuiCMD() {
-        title = "[lang]gui.test[/lang]";
+        title = ChatColor.GREEN + "test[lang]gui.test[/lang]";
     }
 
     @Override

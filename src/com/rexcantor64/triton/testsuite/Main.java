@@ -1,6 +1,7 @@
-package com.rexcantor64.multilanguageplugin.testsuite;
+package com.rexcantor64.triton.testsuite;
 
-import com.rexcantor64.multilanguageplugin.testsuite.commands.MainCMD;
+import com.rexcantor64.triton.testsuite.commands.MainCMD;
+import me.tigerhix.lib.scoreboard.ScoreboardLib;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {

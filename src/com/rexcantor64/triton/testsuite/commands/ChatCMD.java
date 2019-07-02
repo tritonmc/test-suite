@@ -1,4 +1,4 @@
-package com.rexcantor64.multilanguageplugin.testsuite.commands;
+package com.rexcantor64.triton.testsuite.commands;
 
 import com.google.common.collect.Lists;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -28,6 +28,8 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
         addFromJson("[{\"text\":\"<TestBot> \"},{\"text\":\"Green Color: \",\"color\":\"green\",\"extra\":[{\"text\":\"[lang]chat.test.7[/lang]\"}]}]");
         addFromJson("[\"\",{\"text\":\"<TestBot> \",\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"This is some blue text! [lang]chat.test.0[/lang]\",\"color\":\"aqua\"}]}}},{\"text\":\"[lang]chat.test.0[/lang]\"}]");
         addFromLegacy("[lang]chat.test.0[/lang] some white text in the middle [lang]chat.test.0[/lang] and even more text! [lang]chat.test.0[/lang]");
+        addFromJson("{\"extra\":[{\"extra\":[{\"extra\":[{\"extra\":[{\"extra\":[{\"extra\":[{\"text\":\" \"},{\"color\":\"gold\",\"text\":\"▎\"},{\"color\":\"yellow\",\"text\":\" Chat \"},{\"color\":\"gold\",\"text\":\"► \"},{\"color\":\"gray\",\"text\":\"[\"},{\"color\":\"white\",\"italic\":true,\"text\":\"[lang]chc.me[/lang]\"},{\"color\":\"white\",\"text\":\" ► \"},{\"color\":\"white\",\"italic\":true,\"text\":\"teszteer\"},{\"color\":\"gray\",\"text\":\"] \"},{\"color\":\"white\",\"text\":\"as\"}],\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/msg teszteer \"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":[{\"extra\":[{\"extra\":[{\"text\":\"\"},{\"text\":\"\"},{\"text\":\"\"},{\"text\":\"\"},{\"color\":\"yellow\",\"text\":\"Time\"},{\"color\":\"yellow\",\"text\":\"\"},{\"color\":\"yellow\",\"text\":\"\"},{\"color\":\"yellow\",\"text\":\": §f15.03.2018 18:40:24\\n\"}],\"text\":\"\"},{\"color\":\"yellow\",\"extra\":[{\"color\":\"yellow\",\"text\":\"Receiver\"}],\"text\":\"\"},{\"color\":\"yellow\",\"extra\":[{\"extra\":[{\"color\":\"yellow\",\"text\":\": §fteszteer\"}],\"text\":\"\"}],\"text\":\"\"}],\"text\":\"\"}]},\"text\":\"\"}],\"text\":\"\"}],\"text\":\"\"}],\"text\":\"\"}],\"text\":\"\"}],\"text\":\"\"}");
+        addFromLegacy("[lang]chat.test.11[args][arg]&4[lang]chat.test.11.1[/lang]&a[/arg][/args][/lang]");
     }
 
     @Override

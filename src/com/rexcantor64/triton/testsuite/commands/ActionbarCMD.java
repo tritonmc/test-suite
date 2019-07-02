@@ -1,11 +1,7 @@
-package com.rexcantor64.multilanguageplugin.testsuite.commands;
+package com.rexcantor64.triton.testsuite.commands;
 
 import com.connorlinfoot.actionbarapi.ActionBarAPI;
 import com.google.common.collect.Lists;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.chat.ComponentSerializer;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

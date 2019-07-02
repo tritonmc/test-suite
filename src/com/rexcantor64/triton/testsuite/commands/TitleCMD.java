@@ -1,4 +1,4 @@
-package com.rexcantor64.multilanguageplugin.testsuite.commands;
+package com.rexcantor64.triton.testsuite.commands;
 
 import com.google.common.collect.Lists;
 import net.md_5.bungee.api.chat.TextComponent;

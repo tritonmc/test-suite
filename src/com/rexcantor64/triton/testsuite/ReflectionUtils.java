@@ -1,4 +1,4 @@
-package com.rexcantor64.multilanguageplugin.testsuite;
+package com.rexcantor64.triton.testsuite;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
