@@ -14,20 +14,26 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class GuiCMD implements CommandExecutor {
 
     private String title;
 
     GuiCMD() {
-        title = ChatColor.GREEN + "test[lang]gui.test[/lang]";
+        title = ChatColor.GREEN + "testgui[lang]gui.test[/lang]";
     }
 
     @Override
     public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
         try {
+            Random rand = new Random();
             Inventory inv = Bukkit.createInventory(null, 9, title);
-            inv.addItem(createItem(64, Material.STONE, "[lang]item.test.0[/lang]"), createItem(64, Material.DIAMOND_BLOCK, "[lang]item.test.1[/lang]", "[lang]item.test.1.lore.0[/lang]", "[lang]item.test.1.lore.1[args][arg]placeholder[/arg][/args][/lang]"));
+            inv.addItem(createItem(64, Material.STONE, "[lang]item.test.0[/lang]"), createItem(64,
+                    Material.DIAMOND_BLOCK, "[lang]item.test.1[/lang]", "[lang]item.test.1.lore.0[/lang]", "[lang" +
+                            "]item.test.1.lore.1[args][arg]placeholder[/arg][/args][/lang]"), createItem(32,
+                    Material.GOLD_BLOCK, "&bThis is an item", "&8This is an item lore " + rand.nextInt(999),
+                    ChatColor.AQUA + "Not translated"));
             for (Player p : Bukkit.getOnlinePlayers())
                 p.openInventory(inv);
             if (args.length == 0)

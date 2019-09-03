@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
 import java.util.List;
+import java.util.Random;
 
 public class ActionbarCMD implements CommandExecutor, TabCompleter {
 
@@ -19,7 +20,11 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
         messages.add("[lang]actionbar.test.1[/lang]");
         messages.add(ChatColor.GOLD + "Apply gold color: [lang]actionbar.test.2[/lang]");
         messages.add("[lang]actionbar.test.3[args][arg]&0P&1L&2A&3C&4E&5H&6O&7L&8D&9E&aR&b![/arg][/args][/lang]");
-        messages.add("[lang]actionbar.test.4[args][arg]&0P&1L&2A&3C&4E&5H&6O&7L&8D&9E&aR&b![/arg][arg]&bA&cN&dO&eT&fH&lE&aR[/arg][/args][/lang]");
+        messages.add("[lang]actionbar.test.4[args][arg]&0P&1L&2A&3C&4E&5H&6O&7L&8D&9E&aR&b![/arg][arg]&bA&cN&dO&eT&fH" +
+                "&lE&aR[/arg][/args][/lang]");
+        messages.add("&aThis is something that needs &bto &dbe &1 changed.");
+        Random rand = new Random();
+        messages.add("&7This is an actionbar with a random value &6" + rand.nextInt(100) + " &a woah!");
     }
 
     @Override

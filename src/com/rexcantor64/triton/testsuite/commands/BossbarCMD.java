@@ -1,9 +1,9 @@
 package com.rexcantor64.triton.testsuite.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
-import org.bukkit.boss.BarColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,8 +21,8 @@ public class BossbarCMD implements CommandExecutor {
         addBar("[lang]bossbars.test.1[/lang]", BarColor.GREEN, BarStyle.SEGMENTED_6);
         addBar("[lang]bossbars.test.2[/lang]", BarColor.PINK, BarStyle.SEGMENTED_10);
         addBar("[lang]bossbars.test.3[/lang]", BarColor.WHITE, BarStyle.SEGMENTED_12);
-        addBar("[lang]bossbars.test.4[/lang]", BarColor.YELLOW, BarStyle.SEGMENTED_20);
-        addBar("[lang]bossbars.test.5[/lang]", BarColor.RED, BarStyle.SOLID);
+        addBar("Bossbar 123456", BarColor.YELLOW, BarStyle.SEGMENTED_20);
+        addBar("Bossbar with placeholder hehehe", BarColor.RED, BarStyle.SOLID);
     }
 
     private void addBar(String title, BarColor color, BarStyle style) {

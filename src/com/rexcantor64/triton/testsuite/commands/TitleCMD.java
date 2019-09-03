@@ -20,7 +20,10 @@ public class TitleCMD implements CommandExecutor, TabCompleter {
         messages.add(new String[]{"[lang]title.test.0[/lang]", "[lang]title.sub.test.0[/lang]"});
         messages.add(new String[]{"[lang]title.test.1[/lang]", "[lang]title.sub.test.1[/lang]"});
         messages.add(new String[]{ChatColor.YELLOW + "This text [lang]title.test.2[/lang]", ""});
-        messages.add(new String[]{"[lang]title.test.3[/lang] [lang]title.test.3a[/lang]", "[lang]title.sub.test.3[/lang]"});
+        messages.add(new String[]{"[lang]title.test.3[/lang] [lang]title.test.3a[/lang]", "[lang]title.sub.test" +
+                ".3[/lang]"});
+        messages.add(new String[]{"&4Title &9ijrlhiajhlioajnlianjailn", "&5Sub title &4ldjgileajghaelhtrsg " +
+                "placeholder yay"});
     }
 
     @Override
@@ -32,8 +35,10 @@ public class TitleCMD implements CommandExecutor, TabCompleter {
         try {
             int id = Integer.parseInt(args[0]);
             if (id < messages.size()) {
-                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "title @a title " + ComponentSerializer.toString(TextComponent.fromLegacyText(messages.get(id)[0])));
-                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "title @a subtitle " + ComponentSerializer.toString(TextComponent.fromLegacyText(messages.get(id)[1])));
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),
+                        "title @a title " + ComponentSerializer.toString(TextComponent.fromLegacyText(messages.get(id)[0])));
+                Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(),
+                        "title @a subtitle " + ComponentSerializer.toString(TextComponent.fromLegacyText(messages.get(id)[1])));
 
             } else
                 s.sendMessage("The maximum ID is " + (messages.size() - 1));
