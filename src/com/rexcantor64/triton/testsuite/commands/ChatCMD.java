@@ -57,7 +57,7 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
         addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&7This won't be translated! &3But this will ;)"));
         addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&3This also won't be translated! &5Get a freaking " +
                 "&0P&1L&2A&3C&4E&5H&6O&7L&8D&9E&aR&b! &2This " +
-                "also won't"));
+                "also won't."));
     }
 
     @Override
