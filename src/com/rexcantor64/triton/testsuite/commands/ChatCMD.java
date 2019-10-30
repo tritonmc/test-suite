@@ -10,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 
@@ -58,6 +59,33 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
         addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&3This also won't be translated! &5Get a freaking " +
                 "&0P&1L&2A&3C&4E&5H&6O&7L&8D&9E&aR&b! &2This " +
                 "also won't."));
+        addFromJson("{\"text\":\"\",\"extra\":[{\"text\":\"\\u003e \",\"color\":\"dark_aqua\"," +
+                "\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/lp export \\u003cfile\\u003e\"}," +
+                "\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"Command: " +
+                "\",\"color\":\"aqua\"},{\"text\":\"Export\\n\",\"color\":\"dark_green\"},{\"text\":\"Description: " +
+                "\",\"color\":\"aqua\"},{\"text\":\"Exports all permissions data to an \\u0027export\\u0027 file. Can" +
+                " be re-imported at a later time.\\n\",\"color\":\"dark_green\"},{\"text\":\"Usage: \"," +
+                "\"color\":\"aqua\"},{\"text\":\"/lp export \\u003cfile\\u003e\\n\",\"color\":\"dark_green\"}," +
+                "{\"text\":\"Permission: \",\"color\":\"aqua\"},{\"text\":\"luckperms.export\\n \\n\"," +
+                "\"color\":\"dark_green\"},{\"text\":\"Click to auto-complete.\",\"color\":\"gray\"}]}}}," +
+                "{\"text\":\"/lp export \\u003cfile\\u003e\",\"color\":\"green\"," +
+                "\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/lp export \\u003cfile\\u003e\"}," +
+                "\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"Command: " +
+                "\",\"color\":\"aqua\"},{\"text\":\"Export\\n\",\"color\":\"dark_green\"},{\"text\":\"Description: " +
+                "\",\"color\":\"aqua\"},{\"text\":\"Exports all permissions data to an \\u0027export\\u0027 file. Can" +
+                " be re-imported at a later time.\\n\",\"color\":\"dark_green\"},{\"text\":\"Usage: \"," +
+                "\"color\":\"aqua\"},{\"text\":\"/lp export \\u003cfile\\u003e\\n\",\"color\":\"dark_green\"}," +
+                "{\"text\":\"Permission: \",\"color\":\"aqua\"},{\"text\":\"luckperms.export\\n \\n\"," +
+                "\"color\":\"dark_green\"},{\"text\":\"Click to auto-complete.\",\"color\":\"gray\"}]}}}]," +
+                "\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/lp export \\u003cfile\\u003e\"}," +
+                "\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"Command: " +
+                "\",\"color\":\"aqua\"},{\"text\":\"Export\\n\",\"color\":\"dark_green\"},{\"text\":\"Description: " +
+                "\",\"color\":\"aqua\"},{\"text\":\"Exports all permissions data to an \\u0027export\\u0027 file. Can" +
+                " be re-imported at a later time.\\n\",\"color\":\"dark_green\"},{\"text\":\"Usage: \"," +
+                "\"color\":\"aqua\"},{\"text\":\"/lp export \\u003cfile\\u003e\\n\",\"color\":\"dark_green\"}," +
+                "{\"text\":\"Permission: \",\"color\":\"aqua\"},{\"text\":\"luckperms.export\\n \\n\"," +
+                "\"color\":\"dark_green\"},{\"text\":\"Click to auto-complete.\",\"color\":\"gray\"}]}}}");
+        addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&aTest &ltest &mtest"));
     }
 
     @Override
@@ -73,9 +101,15 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
         }
         try {
             int id = Integer.parseInt(args[0]);
-            if (id < messages.size())
-                Bukkit.spigot().broadcast(messages.get(id));
-            else
+            if (id < messages.size()) {
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    try {
+                        p.spigot().sendMessage(messages.get(id));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else
                 s.sendMessage("The maximum ID is " + (messages.size() - 1));
         } catch (NumberFormatException e) {
             s.sendMessage(args[0] + " is not a number!");
