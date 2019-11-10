@@ -1,12 +1,20 @@
 package com.rexcantor64.triton.testsuite;
 
 import com.rexcantor64.triton.testsuite.commands.MainCMD;
-import me.tigerhix.lib.scoreboard.ScoreboardLib;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends JavaPlugin {
 
     private static Main instance;
+
+    public static Main get() {
+        return instance;
+    }
 
     @Override
     public void onEnable() {
@@ -14,10 +22,16 @@ public class Main extends JavaPlugin {
         MainCMD cmd = new MainCMD();
         getCommand("testsuite").setExecutor(cmd);
         getCommand("testsuite").setTabCompleter(cmd);
-    }
 
-    public static Main get() {
-        return instance;
+        // Start signs
+        List<String> list = getConfig().getStringList("signs");
+        List<Location> loc = new ArrayList<>();
+        for (String s : list) {
+            String[] ss = s.split(",");
+            loc.add(new Location(Bukkit.getWorld(ss[0]), Integer.parseInt(ss[1]), Integer.parseInt(ss[2]), Integer
+                    .parseInt(ss[3])));
+        }
+        new SignManager(loc);
     }
 
 }
