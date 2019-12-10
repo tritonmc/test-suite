@@ -23,9 +23,10 @@ public class MainCMD implements CommandExecutor, TabCompleter {
         subCommands.put("gui", new GuiCMD());
         subCommands.put("kick", new KickCMD());
         subCommands.put("scoreboard", new ScoreboardCMD());
+        subCommands.put("api", new ApiCMD());
         try {
             subCommands.put("bossbar", new BossbarCMD());
-        }catch(NoClassDefFoundError ignore){
+        } catch (NoClassDefFoundError ignore) {
         }
     }
 

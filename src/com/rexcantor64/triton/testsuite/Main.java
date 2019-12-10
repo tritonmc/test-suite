@@ -1,14 +1,17 @@
 package com.rexcantor64.triton.testsuite;
 
+import com.rexcantor64.triton.api.events.PlayerChangeLanguageSpigotEvent;
 import com.rexcantor64.triton.testsuite.commands.MainCMD;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main extends JavaPlugin {
+public class Main extends JavaPlugin implements Listener {
 
     private static Main instance;
 
@@ -22,6 +25,7 @@ public class Main extends JavaPlugin {
         MainCMD cmd = new MainCMD();
         getCommand("testsuite").setExecutor(cmd);
         getCommand("testsuite").setTabCompleter(cmd);
+        getServer().getPluginManager().registerEvents(this, this);
 
         // Start signs
         List<String> list = getConfig().getStringList("signs");
@@ -32,6 +36,14 @@ public class Main extends JavaPlugin {
                     .parseInt(ss[3])));
         }
         new SignManager(loc);
+    }
+
+    @EventHandler
+    public void onLanguageChange(PlayerChangeLanguageSpigotEvent e) {
+        if (e.getNewLanguage() != e.getOldLanguage())
+            System.out.println("[Test Suite] Player " + e.getLanguagePlayer()
+                    .getUUID() + " has changed their language from " + e.getOldLanguage().getName() + " to " + e
+                    .getNewLanguage().getName());
     }
 
 }
