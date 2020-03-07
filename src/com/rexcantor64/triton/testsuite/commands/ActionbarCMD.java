@@ -25,6 +25,7 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
         messages.add("&aThis is something that needs &bto &dbe &1 changed.");
         Random rand = new Random();
         messages.add("&7This is an actionbar with a random value &6" + rand.nextInt(100) + " &a woah!");
+        messages.add("&4&mYOU SHOULDN'T SEE THIS! [lang]disabled.line[/lang]");
     }
 
     @Override

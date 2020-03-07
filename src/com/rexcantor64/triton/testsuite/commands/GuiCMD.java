@@ -29,11 +29,18 @@ public class GuiCMD implements CommandExecutor {
         try {
             Random rand = new Random();
             Inventory inv = Bukkit.createInventory(null, 9, title);
-            inv.addItem(createItem(64, Material.STONE, "[lang]item.test.0[/lang]"), createItem(64,
-                    Material.DIAMOND_BLOCK, "[lang]item.test.1[/lang]", "[lang]item.test.1.lore.0[/lang]", "[lang" +
-                            "]item.test.1.lore.1[args][arg]placeholder[/arg][/args][/lang]"), createItem(32,
-                    Material.GOLD_BLOCK, "&bThis is an item", "&8This is an item lore " + rand.nextInt(999),
-                    ChatColor.AQUA + "Not translated"));
+            inv.addItem(
+                    createItem(64, Material.STONE, "[lang]item.test.0[/lang]"),
+                    createItem(64,
+                            Material.DIAMOND_BLOCK, "[lang]item.test.1[/lang]", "[lang]item.test.1.lore.0[/lang]",
+                            "[lang]item.test.1.lore.1[args][arg]placeholder[/arg][/args][/lang]"),
+                    createItem(32,
+                            Material.GOLD_BLOCK, "&bThis is an item", "&8This is an item lore " + rand.nextInt(999),
+                            ChatColor.AQUA + "Not translated"),
+                    createItem(16, Material.DIAMOND, "&aYou can't see me[lang]disabled.line[/lang]",
+                            color("&aYou can see me"), color("&3But not me[lang]disabled.line[/lang]"), color("&7You " +
+                                    "can also see me"))
+            );
             for (Player p : Bukkit.getOnlinePlayers())
                 p.openInventory(inv);
             if (args.length == 0)
@@ -50,10 +57,14 @@ public class GuiCMD implements CommandExecutor {
         return true;
     }
 
+    private String color(String s) {
+        return ChatColor.translateAlternateColorCodes('&', s);
+    }
+
     private ItemStack createItem(int amount, Material type, String name, String... lore) {
         ItemStack is = new ItemStack(type, amount);
         ItemMeta meta = is.getItemMeta();
-        meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+        meta.setDisplayName(color(name));
         meta.setLore(Arrays.asList(lore));
         is.setItemMeta(meta);
         return is;

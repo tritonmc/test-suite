@@ -20,7 +20,7 @@ public class BossbarCMD implements CommandExecutor {
         addBar("[lang]bossbars.test.0[/lang]", BarColor.BLUE, BarStyle.SOLID);
         addBar("[lang]bossbars.test.1[/lang]", BarColor.GREEN, BarStyle.SEGMENTED_6);
         addBar("[lang]bossbars.test.2[/lang]", BarColor.PINK, BarStyle.SEGMENTED_10);
-        addBar("[lang]bossbars.test.3[/lang]", BarColor.WHITE, BarStyle.SEGMENTED_12);
+        addBar("[lang]bossbars.test.3[/lang][lang]disabled.line[/lang]", BarColor.WHITE, BarStyle.SEGMENTED_12);
         addBar("Bossbar 123456", BarColor.YELLOW, BarStyle.SEGMENTED_20);
         addBar("Bossbar with placeholder hehehe", BarColor.RED, BarStyle.SOLID);
     }
