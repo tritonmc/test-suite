@@ -86,6 +86,19 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
                 "{\"text\":\"Permission: \",\"color\":\"aqua\"},{\"text\":\"luckperms.export\\n \\n\"," +
                 "\"color\":\"dark_green\"},{\"text\":\"Click to auto-complete.\",\"color\":\"gray\"}]}}}");
         addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&aTest &ltest &mtest"));
+        addFromJson("{\"extra\":[{\"extra\":[{\"color\":\"gray\",\"text\":\"\"}]," +
+                "\"hoverEvent\":{\"action\":\"show_text\",\"value\":[{\"extra\":[{\"color\":\"dark_gray\"," +
+                "\"text\":\"*-----* \"},{\"color\":\"white\",\"text\":\"FabricSoftener \"},{\"color\":\"dark_gray\"," +
+                "\"text\":\"*-----*\\n\"},{\"color\":\"gray\",\"text\":\"Prefix\"},{\"color\":\"dark_gray\"," +
+                "\"text\":\": \"},{\"color\":\"gray\",\"text\":\"\\n\"},{\"color\":\"gray\",\"text\":\"Group\"}," +
+                "{\"color\":\"dark_gray\",\"text\":\": \"},{\"color\":\"aqua\",\"text\":\"owner\"}],\"text\":\"\"}]}," +
+                "\"text\":\"\"},{\"extra\":[{\"color\":\"gray\",\"text\":\"FabricSoftener\"},{\"color\":\"gray\"," +
+                "\"text\":\": \"},{\"color\":\"white\",\"text\":\"\"}]," +
+                "\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/msg FabricSoftener \"}," +
+                "\"hoverEvent\":{\"action\":\"show_text\",\"value\":[{\"extra\":[{\"color\":\"gray\"," +
+                "\"text\":\"Message issued: \"},{\"color\":\"aqua\",\"text\":\"14.03.2020 23:55:27\\n\"}," +
+                "{\"color\":\"gray\",\"text\":\"Click to send a message\"}],\"text\":\"\"}]},\"text\":\"\"}," +
+                "{\"extra\":[{\"color\":\"white\",\"text\":\"a\"}],\"text\":\"\"}],\"text\":\"\"}");
     }
 
     @Override
