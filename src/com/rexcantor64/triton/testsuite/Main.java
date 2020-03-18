@@ -6,6 +6,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -44,6 +45,11 @@ public class Main extends JavaPlugin implements Listener {
             System.out.println("[Test Suite] Player " + e.getLanguagePlayer()
                     .getUUID() + " has changed their language from " + e.getOldLanguage().getName() + " to " + e
                     .getNewLanguage().getName());
+    }
+
+    @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        e.getPlayer().sendMessage("[lang]chat.test.0[/lang]");
     }
 
 }
