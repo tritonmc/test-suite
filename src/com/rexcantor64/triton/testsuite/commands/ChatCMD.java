@@ -99,6 +99,12 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
                 "\"text\":\"Message issued: \"},{\"color\":\"aqua\",\"text\":\"14.03.2020 23:55:27\\n\"}," +
                 "{\"color\":\"gray\",\"text\":\"Click to send a message\"}],\"text\":\"\"}]},\"text\":\"\"}," +
                 "{\"extra\":[{\"color\":\"white\",\"text\":\"a\"}],\"text\":\"\"}],\"text\":\"\"}");
+        addFromJson("{\"extra\":[{\"color\":\"aqua\",\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/msg " +
+                "Over_Brave \"},\"hoverEvent\":{\"action\":\"show_text\"," +
+                "\"value\":{\"extra\":[{\"text\":\"\u00A7c\u25A3 \u00A7dOver_Brave \u00A79\u00F6zel mesaj atmak " +
+                "i\u00E7in t\u0131kla!\"}],\"text\":\"\"}},\"text\":\"\u00A7f\u00A74\u00A7lYETKILI\u00A74\u00A7l " +
+                "\u00A74\u00A7l\u00A7r\u00A7cOver_Brave\u00A7c \u00A7c\u00A78\u00A7l\u00BB\u00A78\u00A7l " +
+                "\u00A78\u00A7l\u00A7b\"},{\"color\":\"aqua\",\"text\":\"\u00A7ba\"}],\"text\":\"\"}");
     }
 
     @Override
