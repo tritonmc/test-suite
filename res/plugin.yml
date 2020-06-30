@@ -3,7 +3,7 @@ main: com.rexcantor64.triton.testsuite.Main
 version: 0.0.1
 website: https://www.spigotmc.org/resources/triton.30331/
 author: Rexcantor64
-softdepend: [MultiLanguagePlugin]
+depend: [Triton, ProtocolLib]
 description: Test Suite
 api-version: '1.13'
 commands:

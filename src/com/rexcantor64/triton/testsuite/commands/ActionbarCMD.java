@@ -1,21 +1,34 @@
 package com.rexcantor64.triton.testsuite.commands;
 
-import com.connorlinfoot.actionbarapi.ActionBarAPI;
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.ProtocolLibrary;
+import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.google.common.collect.Lists;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 public class ActionbarCMD implements CommandExecutor, TabCompleter {
 
+    private final int mcVersion;
     private List<String> messages = Lists.newArrayList();
 
     ActionbarCMD() {
+        String a = Bukkit.getServer().getClass().getPackage().getName();
+        String[] s = a.substring(a.lastIndexOf('.') + 1).split("_");
+        mcVersion = Integer.parseInt(s[1]);
+
         messages.add("[lang]actionbar.test.0[/lang]");
         messages.add("[lang]actionbar.test.1[/lang]");
         messages.add(ChatColor.GOLD + "Apply gold color: [lang]actionbar.test.2[/lang]");
@@ -37,7 +50,7 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
         try {
             int id = Integer.parseInt(args[0]);
             if (id < messages.size())
-                ActionBarAPI.sendActionBarToAllPlayers(messages.get(id));
+                sendActionBarToEveryone(messages.get(id));
             else
                 s.sendMessage("The maximum ID is " + (messages.size() - 1));
         } catch (NumberFormatException e) {
@@ -52,5 +65,24 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
         for (int i = 0; i < messages.size(); i++)
             ids.add(Integer.toString(i));
         return ids;
+    }
+
+    private void sendActionBarToEveryone(String msg) {
+        PacketContainer packet = ProtocolLibrary.getProtocolManager().createPacket(PacketType.Play.Server.CHAT);
+        if (mcVersion >= 12)
+            packet.getChatTypes().writeSafely(0, EnumWrappers.ChatType.GAME_INFO);
+        else
+            packet.getBytes().writeSafely(0, (byte) 2);
+
+        packet.getModifier().writeSafely(1, new BaseComponent[]{new TextComponent(ChatColor
+                .translateAlternateColorCodes('§', msg))});
+        packet.getUUIDs().writeSafely(0, new UUID(0L, 0L));
+
+        try {
+            for (Player p : Bukkit.getServer().getOnlinePlayers())
+                ProtocolLibrary.getProtocolManager().sendServerPacket(p, packet, true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
