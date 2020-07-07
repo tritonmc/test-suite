@@ -2,10 +2,12 @@ package com.rexcantor64.triton.testsuite;
 
 import com.rexcantor64.triton.api.events.PlayerChangeLanguageSpigotEvent;
 import com.rexcantor64.triton.testsuite.commands.MainCMD;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -50,6 +52,11 @@ public class Main extends JavaPlugin implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         e.getPlayer().sendMessage("[lang]chat.test.0[/lang]");
+    }
+
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent e) {
+        e.setMessage(ChatColor.translateAlternateColorCodes('&', e.getMessage()));
     }
 
 }
