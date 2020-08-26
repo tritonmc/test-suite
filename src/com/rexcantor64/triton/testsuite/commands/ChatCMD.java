@@ -105,6 +105,8 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
                 "i\u00E7in t\u0131kla!\"}],\"text\":\"\"}},\"text\":\"\u00A7f\u00A74\u00A7lYETKILI\u00A74\u00A7l " +
                 "\u00A74\u00A7l\u00A7r\u00A7cOver_Brave\u00A7c \u00A7c\u00A78\u00A7l\u00BB\u00A78\u00A7l " +
                 "\u00A78\u00A7l\u00A7b\"},{\"color\":\"aqua\",\"text\":\"\u00A7ba\"}],\"text\":\"\"}");
+        addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&cSome red text [lang]json.test.0[/lang]"));
+        addFromLegacy("[lang]json.test.1[args][arg]Special Mode[/arg][/args][/lang]");
     }
 
     @Override
