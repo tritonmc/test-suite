@@ -107,6 +107,11 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
                 "\u00A78\u00A7l\u00A7b\"},{\"color\":\"aqua\",\"text\":\"\u00A7ba\"}],\"text\":\"\"}");
         addFromLegacy(ChatColor.translateAlternateColorCodes('&', "&cSome red text [lang]json.test.0[/lang]"));
         addFromLegacy("[lang]json.test.1[args][arg]Special Mode[/arg][/args][/lang]");
+        addFromJson("{\"extra\":[{\"text\":\"\u00A7e*\"},{\"text\":\" \"}," +
+                "{\"clickEvent\":{\"action\":\"suggest_command\"," +
+                "\"value\":\"/gs create {bg-img:somefile}\"},\"hoverEvent\":{\"action\":\"show_text\"," +
+                "\"value\":[{\"text\":\"Click here for something\"}]},\"text\":\"\u00A7b[\u00A7b\u00A7l→\u00A7b]\"}]," +
+                "\"text\":\"    \u00A78- \u00A77somefile\"}");
     }
 
     @Override
