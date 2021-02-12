@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'net.minecrell.plugin-yml.bukkit' version '0.3.0'
+}
+
+String pluginDescription = project.property("pluginDescription")
+String pluginWebsite = project.property("pluginWebsite")
+String pluginAuthor = project.property("pluginAuthor")
+String pluginApiVersion = project.property("pluginApiVersion")
+String pluginName = project.property("pluginName")
+
+apply plugin: 'com.github.johnrengelman.shadow'
+apply plugin: 'net.minecrell.plugin-yml.bukkit'
+apply plugin: 'java'
+
+group 'com.rexcantor64.triton'
+
+version '3.0.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven { url 'https://repo.dmulloy2.net/nexus/repository/public/' }
+    maven { url 'https://jitpack.io' }
+}
+
+
+dependencies {
+    implementation 'com.github.tritonmc:Triton:v3.2.0' // Triton API
+    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'com.comphenix.protocol:ProtocolLib:4.5.0'
+    implementation 'com.github.IM-IgniteDEV:ScoreBoardLibRefreshed:master-SNAPSHOT'
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
+
+
+bukkit {
+    name = pluginName
+    version = project.version
+    description = pluginDescription
+    website = pluginWebsite
+    author = pluginAuthor
+    main = 'com.rexcantor64.triton.testsuite.Main'
+    apiVersion = pluginApiVersion
+
+    depend = ['ProtocolLib']
+    softDepend = ['PlaceholderAPI']
+    commands {
+        testsuite {
+            description = 'The main command of MultiLanguagePlugin Test Suite.'
+            aliases = ["test"]
+        }
+    }
+
+
+}
+
+shadowJar {
+    getArchiveBaseName().set(pluginName)
+}
