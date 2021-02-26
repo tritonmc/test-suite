@@ -112,7 +112,6 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
                 "\"value\":\"/gs create {bg-img:somefile}\"},\"hoverEvent\":{\"action\":\"show_text\"," +
                 "\"value\":[{\"text\":\"Click here for something\"}]},\"text\":\"\u00A7b[\u00A7b\u00A7l→\u00A7b]\"}]," +
                 "\"text\":\"    \u00A78- \u00A77somefile\"}");
-        addFromJson("{\"translate\":\"death.attack.arrow\",\"with\":[{\"insertion\":\"Four_HA\",\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/tell Four_HA \"},\"hoverEvent\":{\"action\":\"show_entity\",\"contents\":{\"type\":\"minecraft:player\",\"id\":\"cfe7f30c-95d9-4651-a565-993bddf257e9\",\"name\":{\"text\":\"Four_HA\"}}},\"text\":\"Four_HA\"},{\"insertion\":\"Kylepoops\",\"clickEvent\":{\"action\":\"suggest_command\",\"value\":\"/tell Kylepoops \"},\"hoverEvent\":{\"action\":\"show_entity\",\"contents\":{\"type\":\"minecraft:player\",\"id\":\"e2d60972-d363-46c1-87a2-ac90db4fc93d\",\"name\":{\"text\":\"Kylepoops\"}}},\"text\":\"Kylepoops\"}]}");
     }
 
     @Override
