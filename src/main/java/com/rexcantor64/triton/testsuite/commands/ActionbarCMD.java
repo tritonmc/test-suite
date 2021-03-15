@@ -74,7 +74,7 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
         else
             packet.getBytes().writeSafely(0, (byte) 2);
 
-        packet.getModifier().writeSafely(1, new BaseComponent[]{new TextComponent(ChatColor
+        packet.getSpecificModifier(BaseComponent[].class).writeSafely(0, new BaseComponent[]{new TextComponent(ChatColor
                 .translateAlternateColorCodes('§', msg))});
         packet.getUUIDs().writeSafely(0, new UUID(0L, 0L));
 
