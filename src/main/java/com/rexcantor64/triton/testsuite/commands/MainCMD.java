@@ -19,7 +19,10 @@ public class MainCMD implements CommandExecutor, TabCompleter {
         setCommandAndCompleter("chat", new ChatCMD());
         setCommandAndCompleter("actionbar", new ActionbarCMD());
         setCommandAndCompleter("title", new TitleCMD());
-        subCommands.put("tab", new TabCMD());
+        try {
+            subCommands.put("tab", new TabCMD());
+        } catch (ClassNotFoundException ignore) {
+        }
         subCommands.put("gui", new GuiCMD());
         subCommands.put("kick", new KickCMD());
         subCommands.put("scoreboard", new ScoreboardCMD());
