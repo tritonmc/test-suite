@@ -16,7 +16,7 @@ apply plugin: 'java'
 
 group 'com.rexcantor64.triton'
 
-version '3.0.0'
+version '3.1.0'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 repositories {
@@ -37,14 +37,14 @@ repositories {
 dependencies {
     implementation 'com.github.tritonmc:Triton:v3.2.0' // Triton API
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
-    compileOnly 'com.comphenix.protocol:ProtocolLib:4.5.0'
+    compileOnly 'com.comphenix.protocol:ProtocolLib:4.8.0-SNAPSHOT'
     implementation 'com.github.IM-IgniteDEV:ScoreBoardLibRefreshed:master-SNAPSHOT'
 
-    compileOnly 'org.projectlombok:lombok:1.18.12'
-    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    testCompileOnly 'org.projectlombok:lombok:1.18.12'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 }
 
 

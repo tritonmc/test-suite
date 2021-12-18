@@ -8,7 +8,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainCMD implements CommandExecutor, TabCompleter {
 
@@ -19,10 +23,7 @@ public class MainCMD implements CommandExecutor, TabCompleter {
         setCommandAndCompleter("chat", new ChatCMD());
         setCommandAndCompleter("actionbar", new ActionbarCMD());
         setCommandAndCompleter("title", new TitleCMD());
-        try {
-            subCommands.put("tab", new TabCMD());
-        } catch (ClassNotFoundException ignore) {
-        }
+        subCommands.put("tab", new TabCMD());
         subCommands.put("gui", new GuiCMD());
         subCommands.put("kick", new KickCMD());
         subCommands.put("scoreboard", new ScoreboardCMD());
