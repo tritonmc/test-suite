@@ -23,6 +23,7 @@ public class MainCMD implements CommandExecutor, TabCompleter {
         setCommandAndCompleter("chat", new ChatCMD());
         setCommandAndCompleter("actionbar", new ActionbarCMD());
         setCommandAndCompleter("title", new TitleCMD());
+        subCommands.put("adventure-tab", new AdventureTabCMD());
         subCommands.put("tab", new TabCMD());
         subCommands.put("gui", new GuiCMD());
         subCommands.put("kick", new KickCMD());
