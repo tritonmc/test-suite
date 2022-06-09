@@ -5,6 +5,7 @@ import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.google.common.collect.Lists;
+import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -22,7 +23,7 @@ import java.util.UUID;
 public class ActionbarCMD implements CommandExecutor, TabCompleter {
 
     private final int mcVersion;
-    private List<String> messages = Lists.newArrayList();
+    private final List<String> messages = Lists.newArrayList();
 
     ActionbarCMD() {
         String a = Bukkit.getServer().getClass().getPackage().getName();
@@ -68,6 +69,13 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
     }
 
     private void sendActionBarToEveryone(String msg) {
+        if (mcVersion >= 19) {
+            Bukkit.getServer().getOnlinePlayers().forEach(p -> p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                    TextComponent.fromLegacyText(
+                            ChatColor.translateAlternateColorCodes('&', msg))));
+            return;
+        }
+
         PacketContainer packet = ProtocolLibrary.getProtocolManager().createPacket(PacketType.Play.Server.CHAT);
         if (mcVersion >= 12)
             packet.getChatTypes().writeSafely(0, EnumWrappers.ChatType.GAME_INFO);
