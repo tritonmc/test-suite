@@ -8,6 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.AsyncPlayerChatPreviewEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -56,6 +57,11 @@ public class Main extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e) {
+        e.setMessage(ChatColor.translateAlternateColorCodes('&', e.getMessage()));
+    }
+
+    @EventHandler
+    public void onChatPreview(AsyncPlayerChatPreviewEvent e) {
         e.setMessage(ChatColor.translateAlternateColorCodes('&', e.getMessage()));
     }
 
