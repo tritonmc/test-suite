@@ -3,6 +3,7 @@ package com.rexcantor64.triton.testsuite.commands;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
+import com.comphenix.protocol.utility.MinecraftVersion;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.google.common.collect.Lists;
 import net.md_5.bungee.api.ChatMessageType;
@@ -22,14 +23,9 @@ import java.util.UUID;
 
 public class ActionbarCMD implements CommandExecutor, TabCompleter {
 
-    private final int mcVersion;
     private final List<String> messages = Lists.newArrayList();
 
     ActionbarCMD() {
-        String a = Bukkit.getServer().getClass().getPackage().getName();
-        String[] s = a.substring(a.lastIndexOf('.') + 1).split("_");
-        mcVersion = Integer.parseInt(s[1]);
-
         messages.add("[lang]actionbar.test.0[/lang]");
         messages.add("[lang]actionbar.test.1[/lang]");
         messages.add(ChatColor.GOLD + "Apply gold color: [lang]actionbar.test.2[/lang]");
@@ -69,7 +65,7 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
     }
 
     private void sendActionBarToEveryone(String msg) {
-        if (mcVersion >= 19) {
+        if (MinecraftVersion.WILD_UPDATE.atOrAbove()) { // 1.19+
             Bukkit.getServer().getOnlinePlayers().forEach(p -> p.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                     TextComponent.fromLegacyText(
                             ChatColor.translateAlternateColorCodes('&', msg))));
@@ -77,7 +73,7 @@ public class ActionbarCMD implements CommandExecutor, TabCompleter {
         }
 
         PacketContainer packet = ProtocolLibrary.getProtocolManager().createPacket(PacketType.Play.Server.CHAT);
-        if (mcVersion >= 12)
+        if (MinecraftVersion.COLOR_UPDATE.atOrAbove()) // 1.12+
             packet.getChatTypes().writeSafely(0, EnumWrappers.ChatType.GAME_INFO);
         else
             packet.getBytes().writeSafely(0, (byte) 2);
