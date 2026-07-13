@@ -16,7 +16,7 @@ apply plugin: 'java'
 
 group 'com.rexcantor64.triton'
 
-version '3.9.6'
+version '4.0.0'
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
