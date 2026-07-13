@@ -79,4 +79,5 @@ shadowJar {
     getArchiveBaseName().set(pluginName)
 
     relocate 'net.kyori.adventure', 'com.rexcantor64.triton.testsuite.libs.adventure'
+    relocate 'me.tigerhix.lib.scoreboard', 'com.rexcantor64.triton.testsuite.libs.scoreboard'
 }
