@@ -61,6 +61,7 @@ bukkit {
     author = pluginAuthor
     main = 'com.rexcantor64.triton.testsuite.Main'
     apiVersion = pluginApiVersion
+    foliaSupported = true
 
     depend = ['ProtocolLib']
     softDepend = ['PlaceholderAPI']
