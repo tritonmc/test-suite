@@ -17,8 +17,10 @@ apply plugin: 'java'
 group 'com.rexcantor64.triton'
 
 version '3.9.6'
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 repositories {
     mavenLocal()
     mavenCentral()
