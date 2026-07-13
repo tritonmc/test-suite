@@ -37,7 +37,7 @@ repositories {
 
 dependencies {
     implementation 'com.rexcantor64.triton:api:4.0.0-SNAPSHOT' // Triton API
-    compileOnly 'org.spigotmc:spigot-api:1.20.6-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.20.6-experimental-SNAPSHOT'
     compileOnly 'com.comphenix.protocol:ProtocolLib:5.2.1-SNAPSHOT'
     implementation 'com.github.IM-IgniteDEV:ScoreBoardLibRefreshed:master-SNAPSHOT'
     implementation 'net.kyori:adventure-api:4.17.0'
