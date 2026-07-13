@@ -1,6 +1,7 @@
 package com.rexcantor64.triton.testsuite.commands;
 
 import com.google.common.collect.Lists;
+import com.rexcantor64.triton.testsuite.Main;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.chat.ComponentSerializer;
@@ -13,6 +14,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import java.util.List;
+import java.util.logging.Level;
 
 public class ChatCMD implements CommandExecutor, TabCompleter {
 
@@ -121,8 +123,13 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
             return true;
         }
         if (args[0].equalsIgnoreCase("all")) {
-            for (BaseComponent[] comp : messages)
-                Bukkit.spigot().broadcast(comp);
+            for (BaseComponent[] comp : messages) {
+                try {
+                    Bukkit.spigot().broadcast(comp);
+                } catch (Exception e) {
+                    Main.get().getLogger().log(Level.WARNING, "Failed to broadcast message", e);
+                }
+            }
             return true;
         }
         try {
@@ -132,7 +139,7 @@ public class ChatCMD implements CommandExecutor, TabCompleter {
                     try {
                         p.spigot().sendMessage(messages.get(id));
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        Main.get().getLogger().log(Level.WARNING, "Failed to send message", e);
                     }
                 }
             } else
