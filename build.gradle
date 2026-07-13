@@ -76,4 +76,6 @@ bukkit {
 
 shadowJar {
     getArchiveBaseName().set(pluginName)
+
+    relocate 'net.kyori.adventure', 'com.rexcantor64.triton.testsuite.libs.adventure'
 }
