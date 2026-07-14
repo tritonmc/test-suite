@@ -15,20 +15,43 @@ public class SignManager {
 
     public SignManager(List<Location> signs) {
         this.signs = signs;
-        startSignUpdater();
+        if (isFolia()) {
+            startSignUpdaterFolia();
+        } else {
+            startSignUpdaterBukkit();
+        }
     }
 
-    private void startSignUpdater() {
+    private void startSignUpdaterBukkit() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(Main.get(), () -> {
-            for (Location l : signs) {
-                if (!l.getBlock().getType().name().toUpperCase().contains("SIGN")) continue;
-                Sign sign = (Sign) l.getBlock().getState();
-                sign.setLine(0, "Triton test");
-                sign.setLine(1, "sign :D");
-                sign.setLine(2, random.nextBoolean() ? ChatColor.RED + "OFFLINE" : ChatColor.GREEN + "ONLINE");
-                sign.setLine(3, random.nextInt(20) + "/20 players");
-                sign.update(true);
+            for (Location location : signs) {
+                updateSign(location);
             }
-        }, 0L, 100L);
+        }, 1L, 100L);
+    }
+
+    private void startSignUpdaterFolia() {
+        for (Location location : signs) {
+            Bukkit.getRegionScheduler().runAtFixedRate(Main.get(), location, (task) -> updateSign(location), 1L, 100L);
+        }
+    }
+
+    private void updateSign(Location location) {
+        if (!location.getBlock().getType().name().toUpperCase().contains("SIGN")) return;
+        Sign sign = (Sign) location.getBlock().getState();
+        sign.setLine(0, "Triton test");
+        sign.setLine(1, "sign :D");
+        sign.setLine(2, random.nextBoolean() ? ChatColor.RED + "OFFLINE" : ChatColor.GREEN + "ONLINE");
+        sign.setLine(3, random.nextInt(20) + "/20 players");
+        sign.update(true);
+    }
+
+    private boolean isFolia() {
+        try {
+            Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
     }
 }

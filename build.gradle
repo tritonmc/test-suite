@@ -20,6 +20,9 @@ version '4.0.0'
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
+
+    // Folia wants Java 25, but we are targeting 21 for now
+    disableAutoTargetJvm()
 }
 repositories {
     mavenLocal()
@@ -34,12 +37,16 @@ repositories {
     maven { url 'https://repo.dmulloy2.net/nexus/repository/public/' }
     maven { url 'https://jitpack.io' }
     maven { url "https://repo.diogotc.com/snapshots" }
+    maven {
+        name = 'papermc'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
 }
 
 
 dependencies {
     compileOnly 'com.rexcantor64.triton:api:4.0.0-SNAPSHOT' // Triton API
-    compileOnly 'org.spigotmc:spigot-api:26.2-R0.1-SNAPSHOT'
+    compileOnly 'dev.folia:folia-api:26.1.2.build.8-stable'
     compileOnly 'com.comphenix.protocol:ProtocolLib:5.4.0-SNAPSHOT'
     implementation 'com.github.IM-IgniteDEV:ScoreBoardLibRefreshed:master-SNAPSHOT'
     implementation 'net.kyori:adventure-api:5.2.0'
