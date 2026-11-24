@@ -46,7 +46,7 @@ repositories {
 
 dependencies {
     compileOnly 'com.rexcantor64.triton:api:4.0.0-SNAPSHOT' // Triton API
-    compileOnly 'dev.folia:folia-api:26.3.build.27-stable'
+    compileOnly 'dev.folia:folia-api:26.3.build.28-stable'
     compileOnly 'com.comphenix.protocol:ProtocolLib:5.4.0-SNAPSHOT'
     implementation 'com.github.IM-IgniteDEV:ScoreBoardLibRefreshed:master-SNAPSHOT'
     implementation 'net.kyori:adventure-api:5.2.0'
